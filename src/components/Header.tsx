@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom";
-import HeaderLogo from "../assets/images/HeaderLogo";
-import { APP_NAME } from "../lib/constants";
+// import { Link } from "react-router-dom";
+// import HeaderLogo from "../assets/images/HeaderLogo";
+// import { APP_NAME } from "../lib/constants";
 import { useTheme } from "../context/useTheme";
 import { LuSun, LuMoon } from "react-icons/lu";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  colors: {
+    deepSea: string;
+    shallowWater: string;
+    seafoam: string;
+    sand: string;
+  };
+}
+
+const Header: React.FC<HeaderProps> = ({ colors }) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    // <header className="w-full h-full border-b">
     <header
       className="w-full"
-      style={{ backgroundColor: "rgb(197, 130, 182)" }}
+      style={{
+        background: `linear-gradient(to bottom, ${colors.deepSea} 0%, ${colors.shallowWater} 100%)`,
+        boxShadow: "0 1px 10px rgba(0, 0, 0, 0.1)",
+      }}
     >
       <div className="wrapper flex justify-between items-center">
         <div className="flex-start">
@@ -23,7 +34,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-end pr-10">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-white transition-colors mt-5"
             aria-label={
               isDarkMode ? "Switch to light mode" : "Switch to dark mode"
             }
@@ -31,7 +42,7 @@ const Header: React.FC = () => {
             {isDarkMode ? (
               <LuSun size={20} className="text-yellow-400" />
             ) : (
-              <LuMoon size={20} className="text-gray-700" />
+              <LuMoon size={20} className="text-white" />
             )}
           </button>
         </div>
