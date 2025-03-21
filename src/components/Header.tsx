@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import HeaderLogo from "../../assets/images/HeaderLogo";
-import { APP_NAME } from "../../lib/constants";
-import { useTheme } from "../../context/useTheme";
+import HeaderLogo from "../assets/images/HeaderLogo";
+import { APP_NAME } from "../lib/constants";
+import { useTheme } from "../context/useTheme";
 import { LuSun, LuMoon } from "react-icons/lu";
 
 const Header: React.FC = () => {
