@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import MainLayout from "./components/shared/Layouts/MainLayout";
+import MainLayout from "./components/Layouts/MainLayout";
 import { ThemeProvider } from "./context/ThemeContext";
 
 function App({ children }: Readonly<{ children: React.ReactNode }>) {
