@@ -8,12 +8,16 @@ const Header: React.FC = () => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <header className="w-full h-full border-b">
+    // <header className="w-full h-full border-b">
+    <header
+      className="w-full"
+      style={{ backgroundColor: "rgb(197, 130, 182)" }}
+    >
       <div className="wrapper flex justify-between items-center">
         <div className="flex-start">
-          <Link to="/" className="flex items-center">
+          {/* <Link to="/" className="flex items-center">
             <HeaderLogo />
-          </Link>
+          </Link> */}
         </div>
 
         <div className="flex items-center justify-end pr-10">
