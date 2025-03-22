@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ colors, children }) => {
           {/* <Link to="/" className="flex items-center">
             <HeaderLogo />
           </Link> */}
-          <Dropdown />
+          <Dropdown children={children} />
         </div>
 
         <div className="flex items-center justify-end pr-10">
