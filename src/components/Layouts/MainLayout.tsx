@@ -22,7 +22,7 @@ export default function MainLayout({
   return (
     <div className="flex h-screen w-screen flex-col relative overflow-hidden">
       <div className="flex flex-col h-full w-full z-10 relative">
-        <Header colors={colors} />
+        <Header colors={colors} children={children} />
         {/* Middle content section with gradient from water to sand */}
         <div
           style={{
