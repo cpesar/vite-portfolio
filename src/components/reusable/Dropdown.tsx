@@ -5,7 +5,9 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Dropdown: React.FC<Props> = ({ children }) => {
+export default function Dropdown({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -28,6 +30,4 @@ const Dropdown: React.FC<Props> = ({ children }) => {
       </Drawer>
     </>
   );
-};
-
-export default Dropdown;
+}
