@@ -1,9 +1,7 @@
-// import { Link } from "react-router-dom";
-// import HeaderLogo from "../assets/images/HeaderLogo";
-// import { APP_NAME } from "../lib/constants";
 import { useTheme } from "../context/useTheme";
 import { LuSun, LuMoon } from "react-icons/lu";
-import Dropdown from "./reusable/Dropdown";
+import HeaderDrawer from "./reusable/Drawer";
+import { Button } from "antd";
 
 interface HeaderProps {
   colors: {
@@ -26,18 +24,22 @@ const Header: React.FC<HeaderProps> = ({ colors, children }) => {
         boxShadow: "0 1px 10px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <div className="wrapper flex justify-between items-center">
+      <div className="wrapper flex justify-between items-center mt-2">
         <div className="flex-start">
-          {/* <Link to="/" className="flex items-center">
-            <HeaderLogo />
-          </Link> */}
-          <Dropdown children={children} />
+          <HeaderDrawer children={children} colors={colors} />
         </div>
 
         <div className="flex items-center justify-end pr-10">
-          <button
+          <Button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-white transition-colors mt-5"
+            style={{
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            ghost
             aria-label={
               isDarkMode ? "Switch to light mode" : "Switch to dark mode"
             }
@@ -45,9 +47,9 @@ const Header: React.FC<HeaderProps> = ({ colors, children }) => {
             {isDarkMode ? (
               <LuSun size={20} className="text-yellow-400" />
             ) : (
-              <LuMoon size={20} className="text-white" />
+              <LuMoon size={20} />
             )}
-          </button>
+          </Button>
         </div>
       </div>
     </header>
