@@ -3,6 +3,7 @@
 // import { APP_NAME } from "../lib/constants";
 import { useTheme } from "../context/useTheme";
 import { LuSun, LuMoon } from "react-icons/lu";
+import Dropdown from "./reusable/Dropdown";
 
 interface HeaderProps {
   colors: {
@@ -11,9 +12,10 @@ interface HeaderProps {
     seafoam: string;
     sand: string;
   };
+  children: React.ReactNode;
 }
 
-const Header: React.FC<HeaderProps> = ({ colors }) => {
+const Header: React.FC<HeaderProps> = ({ colors, children }) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -29,6 +31,7 @@ const Header: React.FC<HeaderProps> = ({ colors }) => {
           {/* <Link to="/" className="flex items-center">
             <HeaderLogo />
           </Link> */}
+          <Dropdown />
         </div>
 
         <div className="flex items-center justify-end pr-10">

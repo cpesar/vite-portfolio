@@ -95,7 +95,7 @@ const Footer: React.FC<FooterProps> = ({ colors }) => {
               </div>
             </div>
 
-            <div className="text-xs mt-2 mb-2 text-gray-800">
+            <div className="text-xs mt-2 mb-2 text-gray-800 font-original-surfer">
               {currentYear} &copy; {APP_NAME}
             </div>
           </div>
