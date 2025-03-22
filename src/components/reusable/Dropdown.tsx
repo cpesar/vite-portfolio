@@ -1,7 +1,11 @@
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 
-const Dropdown: React.FC = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Dropdown: React.FC<Props> = ({ children }) => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
