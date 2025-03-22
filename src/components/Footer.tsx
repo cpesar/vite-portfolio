@@ -4,6 +4,7 @@ import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from "react-icons/md";
 import { RxLinkedinLogo } from "react-icons/rx";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
+import { useTheme } from "@/context/useTheme";
 
 interface FooterProps {
   colors: {
@@ -19,6 +20,7 @@ const Footer: React.FC<FooterProps> = ({ colors }) => {
   const footerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const currentYear = new Date().getFullYear();
+  const { isDarkMode } = useTheme();
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -50,19 +52,24 @@ const Footer: React.FC<FooterProps> = ({ colors }) => {
       ref={footerRef}
     >
       <div className="absolute left-1/2 transform -translate-x-1/2 -top-5 z-20">
-        <div className="bg-opacity-60 dark:bg-gray-800 dark:bg-opacity-60 p-0.5 px-2 flex items-center justify-center">
+        <div className=" flex items-center justify-center">
           {isVisible ? (
-            <MdOutlineArrowDropDown size={20} className="text-gray-800" />
+            <MdOutlineArrowDropDown
+              size={20}
+              className={isDarkMode ? "text-white" : "text-gray-800"}
+            />
           ) : (
-            <MdOutlineArrowDropUp size={20} className="text-gray-800" />
+            <MdOutlineArrowDropUp
+              size={20}
+              className={isDarkMode ? "text-white" : "text-gray-800"}
+            />
           )}
         </div>
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-2 bg-transparent z-10"></div>
-
       <footer
-        className={`transition-all duration-300 ease-in-out backdrop-blur-sm border-t border-gray-300 dark:border-gray-700 ${
+        className={`transition-all duration-300 ease-in-out backdrop-blur-sm  border-gray-300 dark:border-gray-700 ${
           isVisible ? "h-20" : "h-1"
         }`}
         style={{
@@ -95,7 +102,11 @@ const Footer: React.FC<FooterProps> = ({ colors }) => {
               </div>
             </div>
 
-            <div className="text-xs mt-2 mb-2 text-gray-800 font-original-surfer">
+            <div
+              className={`text-xs mt-2 mb-2 ${
+                isDarkMode ? "text-white" : "text-gray-800"
+              } font-original-surfer`}
+            >
               {currentYear} &copy; {APP_NAME}
             </div>
           </div>

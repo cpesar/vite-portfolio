@@ -1,3 +1,4 @@
+import { useTheme } from "@/context/useTheme";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
@@ -17,6 +18,7 @@ interface Props {
 
 const HeaderDrawer: React.FC<Props> = ({ colors, children }) => {
   const [open, setOpen] = useState(false);
+  const { isDarkMode } = useTheme();
 
   const showDrawer = () => {
     setOpen(true);
@@ -58,6 +60,9 @@ const HeaderDrawer: React.FC<Props> = ({ colors, children }) => {
           </div>
           <div>
             <LinkStyle to="/projects">Projects</LinkStyle>
+          </div>
+          <div>
+            <LinkStyle to="/resume">Resume</LinkStyle>
           </div>
           <div>
             <LinkStyle to="/contact">Contact</LinkStyle>
