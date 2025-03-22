@@ -4,6 +4,7 @@ import HeaderDrawer from "./reusable/Drawer";
 import { Button } from "antd";
 
 import { RiCodeView } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   colors: {
@@ -26,9 +27,12 @@ const Header: React.FC<HeaderProps> = ({ colors }) => {
       }}
     >
       <div className="flex justify-between items-center p-4">
-        <div className="flex items-center">
-          <RiCodeView size={24} className="text-white" />
-        </div>
+        <Link to="/">
+          <RiCodeView
+            size={24}
+            className="text-white cursor-pointer hover:text-gray-200 transition-colors"
+          />
+        </Link>
 
         <div>
           <HeaderDrawer colors={colors} />
