@@ -3,6 +3,8 @@ import { LuSun, LuMoon } from "react-icons/lu";
 import HeaderDrawer from "./reusable/Drawer";
 import { Button } from "antd";
 
+import { RiCodeView } from "react-icons/ri";
+
 interface HeaderProps {
   colors: {
     deepSea: string;
@@ -23,32 +25,13 @@ const Header: React.FC<HeaderProps> = ({ colors }) => {
         boxShadow: "0 1px 10px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <div className="wrapper flex justify-between items-center mt-2">
-        <div className="flex-start">
-          <HeaderDrawer colors={colors} />
+      <div className="flex justify-between items-center p-4">
+        <div className="flex items-center">
+          <RiCodeView size={24} className="text-white" />
         </div>
 
-        <div className="flex items-center justify-end pr-10">
-          <Button
-            onClick={toggleTheme}
-            style={{
-              border: "none",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            ghost
-            aria-label={
-              isDarkMode ? "Switch to light mode" : "Switch to dark mode"
-            }
-          >
-            {isDarkMode ? (
-              <LuSun size={20} className="text-yellow-400" />
-            ) : (
-              <LuMoon size={20} />
-            )}
-          </Button>
+        <div>
+          <HeaderDrawer colors={colors} />
         </div>
       </div>
     </header>

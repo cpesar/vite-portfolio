@@ -1,4 +1,3 @@
-// import { useTheme } from "@/context/useTheme";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
@@ -52,7 +51,7 @@ const HeaderDrawer: React.FC<Props> = ({ colors }) => {
           background: `linear-gradient(to bottom, ${colors.shallowWater} 0%, ${colors.seafoam} 85%)`,
         }}
         closeIcon={<IoCloseCircleSharp />}
-        placement="left"
+        placement="right"
         onClose={onClose}
         open={open}
         width={150}
