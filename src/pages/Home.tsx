@@ -1,4 +1,4 @@
-const Hero: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-full w-full font-original-surfer text-3xl">
@@ -14,4 +14,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default Home;

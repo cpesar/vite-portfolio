@@ -1,10 +1,13 @@
 import Header from "../Header";
 import Footer from "../Footer";
-import Hero from "../Hero";
+import Home from "@/pages/Home";
+import { useLocation } from "react-router-dom";
 
 export default function MainLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/" || location.pathname === "";
   interface BeachColors {
     deepSea: string;
     shallowWater: string;
@@ -22,7 +25,7 @@ export default function MainLayout({
   return (
     <div className="flex h-screen w-screen flex-col relative overflow-hidden">
       <div className="flex flex-col h-full w-full z-10 relative">
-        <Header colors={colors} children={children} />
+        <Header colors={colors} />
         {/* Middle content section with gradient from water to sand */}
         <div
           style={{
@@ -31,7 +34,7 @@ export default function MainLayout({
           className="flex-1"
         >
           <main className="flex-1 wrapper">{children}</main>
-          <Hero />
+          {isHomePage && <Home />}
         </div>
         <Footer colors={colors} />
       </div>

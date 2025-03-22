@@ -10,10 +10,9 @@ interface HeaderProps {
     seafoam: string;
     sand: string;
   };
-  children: React.ReactNode;
 }
 
-const Header: React.FC<HeaderProps> = ({ colors, children }) => {
+const Header: React.FC<HeaderProps> = ({ colors }) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -26,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ colors, children }) => {
     >
       <div className="wrapper flex justify-between items-center mt-2">
         <div className="flex-start">
-          <HeaderDrawer children={children} colors={colors} />
+          <HeaderDrawer colors={colors} />
         </div>
 
         <div className="flex items-center justify-end pr-10">

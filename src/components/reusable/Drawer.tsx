@@ -1,4 +1,4 @@
-import { useTheme } from "@/context/useTheme";
+// import { useTheme } from "@/context/useTheme";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
@@ -13,18 +13,21 @@ interface Props {
     seafoam: string;
     sand: string;
   };
-  children: React.ReactNode;
 }
 
-const HeaderDrawer: React.FC<Props> = ({ colors, children }) => {
+const HeaderDrawer: React.FC<Props> = ({ colors }) => {
   const [open, setOpen] = useState(false);
-  const { isDarkMode } = useTheme();
+  // const { isDarkMode } = useTheme();
 
   const showDrawer = () => {
     setOpen(true);
   };
 
   const onClose = () => {
+    setOpen(false);
+  };
+
+  const handleLinkClick = () => {
     setOpen(false);
   };
 
@@ -56,16 +59,29 @@ const HeaderDrawer: React.FC<Props> = ({ colors, children }) => {
       >
         <div className="font-original-surfer text-2xl mt-10 ">
           <div>
-            <LinkStyle to="/about">About</LinkStyle>
+            <div>
+              <LinkStyle to="/" onClick={handleLinkClick}>
+                Home
+              </LinkStyle>
+            </div>
+            <LinkStyle to="/about" onClick={handleLinkClick}>
+              About
+            </LinkStyle>
           </div>
           <div>
-            <LinkStyle to="/projects">Projects</LinkStyle>
+            <LinkStyle to="/projects" onClick={handleLinkClick}>
+              Projects
+            </LinkStyle>
           </div>
           <div>
-            <LinkStyle to="/resume">Resume</LinkStyle>
+            <LinkStyle to="/resume" onClick={handleLinkClick}>
+              Resume
+            </LinkStyle>
           </div>
           <div>
-            <LinkStyle to="/contact">Contact</LinkStyle>
+            <LinkStyle to="/contact" onClick={handleLinkClick}>
+              Contact
+            </LinkStyle>
           </div>
         </div>
       </Drawer>

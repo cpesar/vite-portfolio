@@ -1,13 +1,16 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import MainLayout from "./components/Layouts/MainLayout";
 import { ThemeProvider } from "./context/ThemeContext";
+import AppRoutes from "./AppRoutes";
 
-function App({ children }: Readonly<{ children: React.ReactNode }>) {
+function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-white transition-colors duration-200">
         <Router>
-          <MainLayout children={children} />
+          <MainLayout>
+            <AppRoutes />
+          </MainLayout>
         </Router>
       </div>
     </ThemeProvider>
