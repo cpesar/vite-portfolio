@@ -4,23 +4,17 @@ import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from "react-icons/md";
 import { RxLinkedinLogo } from "react-icons/rx";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
-import { useTheme } from "@/context/useTheme";
+import { useColorTheme } from "@/context/DarkModeContext/useColorTheme";
+import { useBeachTheme } from "@/context/BeachContext/useBeachTheme";
 
-interface FooterProps {
-  colors: {
-    deepSea: string;
-    shallowWater: string;
-    seafoam: string;
-    sand: string;
-  };
-}
-
-const Footer: React.FC<FooterProps> = ({ colors }) => {
+const Footer: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const footerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const currentYear = new Date().getFullYear();
-  const { isDarkMode } = useTheme();
+
+  const { isDarkMode } = useColorTheme();
+  const { gradients } = useBeachTheme();
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -72,9 +66,7 @@ const Footer: React.FC<FooterProps> = ({ colors }) => {
         className={`transition-all duration-300 ease-in-out backdrop-blur-sm  border-gray-300 dark:border-gray-700 ${
           isVisible ? "h-20" : "h-1"
         }`}
-        style={{
-          background: `linear-gradient(to bottom, ${colors.seafoam} 0%, ${colors.sand} 100%)`,
-        }}
+        style={{ background: gradients.footer }}
       >
         {isVisible ? (
           <div className="h-full flex flex-col justify-center items-center opacity-100 transition-opacity duration-200 py-2">

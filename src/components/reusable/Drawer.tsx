@@ -1,3 +1,4 @@
+import { useBeachTheme } from "@/context/BeachContext/useBeachTheme";
 import { Button, Drawer } from "antd";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
@@ -5,18 +6,9 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-interface Props {
-  colors: {
-    deepSea: string;
-    shallowWater: string;
-    seafoam: string;
-    sand: string;
-  };
-}
-
-const HeaderDrawer: React.FC<Props> = ({ colors }) => {
+const HeaderDrawer: React.FC = () => {
   const [open, setOpen] = useState(false);
-  // const { isDarkMode } = useTheme();
+  const { gradients } = useBeachTheme();
 
   const showDrawer = () => {
     setOpen(true);
@@ -48,7 +40,7 @@ const HeaderDrawer: React.FC<Props> = ({ colors }) => {
       <Drawer
         styles={{ header: { border: "none" } }}
         style={{
-          background: `linear-gradient(to bottom, ${colors.shallowWater} 0%, ${colors.seafoam} 85%)`,
+          background: gradients.content,
         }}
         closeIcon={<IoCloseCircleSharp />}
         placement="right"

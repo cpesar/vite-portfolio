@@ -1,28 +1,21 @@
-import { useTheme } from "../context/useTheme";
+import { useColorTheme } from "../context/DarkModeContext/useColorTheme";
 import { LuSun, LuMoon } from "react-icons/lu";
 import HeaderDrawer from "./reusable/Drawer";
 import { Button } from "antd";
 
 import { RiCodeView } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useBeachTheme } from "@/context/BeachContext/useBeachTheme";
 
-interface HeaderProps {
-  colors: {
-    deepSea: string;
-    shallowWater: string;
-    seafoam: string;
-    sand: string;
-  };
-}
-
-const Header: React.FC<HeaderProps> = ({ colors }) => {
-  const { isDarkMode, toggleTheme } = useTheme();
+const Header: React.FC = () => {
+  // const { isDarkMode, toggleTheme } = useColorTheme();
+  const { gradients } = useBeachTheme();
 
   return (
     <header
       className="w-full"
       style={{
-        background: `linear-gradient(to bottom, ${colors.deepSea} 0%, ${colors.shallowWater} 100%)`,
+        background: gradients.header,
         boxShadow: "0 1px 10px rgba(0, 0, 0, 0.1)",
       }}
     >
@@ -35,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ colors }) => {
         </Link>
 
         <div>
-          <HeaderDrawer colors={colors} />
+          <HeaderDrawer />
         </div>
       </div>
     </header>

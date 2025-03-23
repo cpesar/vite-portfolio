@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import MainLayout from "./components/Layouts/MainLayout";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "./context/DarkModeContext/ColorThemeProvider";
 import AppRoutes from "./AppRoutes";
 
 function App() {
