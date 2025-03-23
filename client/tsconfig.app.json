@@ -26,5 +26,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["client/src", "public/FullScreen.tsx"]
+  "include": ["src", "../public/FullScreen.tsx"]
 }
