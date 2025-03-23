@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { Skeleton } from "antd";
 
 const ResumePage: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
   const docId = import.meta.env.VITE_RESUME_DOC_ID;
 
   const embedUrl = `https://docs.google.com/document/d/${docId}/preview`;
 
   return (
+    // <Skeleton loading={loading}>
     <div
       className="resume-container"
       style={{
@@ -30,6 +34,7 @@ const ResumePage: React.FC = () => {
         allowFullScreen
       />
     </div>
+    // </Skeleton>
   );
 };
 
