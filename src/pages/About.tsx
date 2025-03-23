@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-// import { BeachColors } from "@/lib/constants/colors";
 
 const AboutPage = () => {
   return (
