@@ -1,7 +1,12 @@
 import React from "react";
+import ProjectList from "../lib/projects/ProjectList";
 
 const ProjectPage = () => {
-  return <>Project Page</>;
+  return (
+    <>
+      <ProjectList />
+    </>
+  );
 };
 
 export default ProjectPage;
