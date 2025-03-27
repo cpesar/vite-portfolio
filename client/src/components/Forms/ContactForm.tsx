@@ -19,6 +19,8 @@ const ContactForm = () => {
     message: "",
   });
 
+  // console.log(formData);
+
   //   type LayoutType = Parameters<typeof Form>[0]["layout"];
   //   const [formLayout, setFormLayout] = useState<LayoutType>("horizontal");
 
@@ -29,7 +31,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("http://localhost:5001/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,8 +40,10 @@ const ContactForm = () => {
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
+        setFormData(data);
         console.log("Form submitted successfully:", data);
         // Show success message
       } else {
