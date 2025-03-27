@@ -1,5 +1,5 @@
-import { Pool, QueryResult } from "pg";
-import db from "../db";
+// import { Pool, QueryResult } from "pg";
+import db from "../config/db";
 
 export interface ContactSubmission {
   id: number;
