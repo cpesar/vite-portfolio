@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 interface SubmitButtonProps {
   form: FormInstance;
   className?: string;
-  onClick: (e: React.FormEvent) => Promise<void>;
+  // onClick: (e: React.FormEvent) => Promise<void>;
 }
 
 export const SubmitButton: React.FC<

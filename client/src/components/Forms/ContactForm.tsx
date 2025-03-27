@@ -1,5 +1,5 @@
 import { Form, Input, message, Button } from "antd";
-import React, { useState } from "react";
+import type { ValidateErrorEntity } from "rc-field-form/lib/interface";
 import { SubmitButton } from "../reusable/SubmitButton";
 
 type FieldType = {
@@ -12,49 +12,39 @@ type FieldType = {
 const ContactForm = () => {
   const [form] = Form.useForm();
 
-  const [formData, setFormData] = useState({
-    subject: "",
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  // console.log(formData);
-
-  //   type LayoutType = Parameters<typeof Form>[0]["layout"];
-  //   const [formLayout, setFormLayout] = useState<LayoutType>("horizontal");
-
-  // Override the default antd form item class
   const formItemClass = "font-original-surfer";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onFinish = async (values: FieldType) => {
     try {
       const response = await fetch("http://localhost:5001/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(values),
       });
 
       const data = await response.json();
-      console.log(data);
+      console.log("Response data:", data);
 
       if (response.ok) {
-        setFormData(data);
-        console.log("Form submitted successfully:", data);
-        // Show success message
+        message.success("Form submitted successfully!");
+        form.resetFields(); // Clear form after successful submission
       } else {
-        // Show error message
+        message.error(
+          "Error submitting form: " + (data.message || "Unknown error")
+        );
         console.error("Error submitting form:", data);
       }
     } catch (error) {
+      message.error("Error submitting form. Please try again.");
       console.error("Error submitting form:", error);
     }
   };
 
+  const onFinishFailed = (errorInfo: ValidateErrorEntity<FieldType>) => {
+    console.log("Form validation failed:", errorInfo);
+  };
   return (
     <>
       <div className="flex flex-col w-full max-w-md mx-auto p-4">
@@ -70,6 +60,8 @@ const ContactForm = () => {
           wrapperCol={{ span: 24 }}
           className="w-full"
           initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
         >
           <Form.Item<FieldType>
             label={<span className="font-original-surfer">Subject</span>}
@@ -141,9 +133,7 @@ const ContactForm = () => {
           </Form.Item>
 
           <Form.Item label={null}>
-            <SubmitButton onClick={handleSubmit} form={form}>
-              Submit
-            </SubmitButton>
+            <SubmitButton form={form}>Submit</SubmitButton>
           </Form.Item>
         </Form>
       </div>

@@ -16,10 +16,7 @@ export const createContact = async (
       return;
     }
 
-    // Save to database using your model
     const contact = await Contact.create(name, email, subject, message);
-
-    // Send email notification?
 
     res
       .status(201)

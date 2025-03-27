@@ -5,23 +5,20 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.DB_PORT || "5432"),
-});
-
 async function initDb() {
+  const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: parseInt(process.env.DB_PORT || "5432"),
+  });
   try {
-    const schemaSQL = fs.readFileSync(
-      path.join(__dirname, "schema.sql"),
-      "utf8"
-    );
+    const schemaPath = path.join(__dirname, "../db/schema.sql");
+    const schema = fs.readFileSync(schemaPath, "utf8");
 
     // Execute the SQL commands
-    await pool.query(schemaSQL);
+    await pool.query(schema);
 
     console.log("Database schema initialized successfully");
     await pool.end();
