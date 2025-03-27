@@ -1,7 +1,9 @@
 import { Form, Input, message, Button } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import { SubmitButton } from "../reusable/SubmitButton";
 
 type FieldType = {
+  subject?: string;
   name?: string;
   email?: string;
   message?: string;
@@ -10,11 +12,44 @@ type FieldType = {
 const ContactForm = () => {
   const [form] = Form.useForm();
 
+  const [formData, setFormData] = useState({
+    subject: "",
+    name: "",
+    email: "",
+    message: "",
+  });
+
   //   type LayoutType = Parameters<typeof Form>[0]["layout"];
   //   const [formLayout, setFormLayout] = useState<LayoutType>("horizontal");
 
   // Override the default antd form item class
   const formItemClass = "font-original-surfer";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Form submitted successfully:", data);
+        // Show success message
+      } else {
+        // Show error message
+        console.error("Error submitting form:", data);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <>
@@ -32,6 +67,23 @@ const ContactForm = () => {
           className="w-full"
           initialValues={{ remember: true }}
         >
+          <Form.Item<FieldType>
+            label={<span className="font-original-surfer">Subject</span>}
+            className={formItemClass}
+            name="subject"
+            rules={[
+              {
+                required: true,
+                message: (
+                  <span className="font-original-surfer">
+                    Please enter your subject
+                  </span>
+                ),
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item<FieldType>
             label={<span className="font-original-surfer">Name</span>}
             className={formItemClass}
@@ -83,14 +135,11 @@ const ContactForm = () => {
           >
             <Input.TextArea style={{ height: 140 }} />
           </Form.Item>
+
           <Form.Item label={null}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="font-original-surfer"
-            >
+            <SubmitButton onClick={handleSubmit} form={form}>
               Submit
-            </Button>
+            </SubmitButton>
           </Form.Item>
         </Form>
       </div>
