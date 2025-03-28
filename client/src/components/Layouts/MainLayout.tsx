@@ -3,7 +3,6 @@ import Header from "../Header";
 import Footer from "../Footer";
 import Home from "../../pages/Home";
 import { useLocation } from "react-router-dom";
-// import { BeachThemeProvider } from "@/context/BeachContext/BeachThemeProvider";
 import { BeachThemeProvider } from "../../context/BeachContext/BeachThemeProvider";
 
 export default function MainLayout({
