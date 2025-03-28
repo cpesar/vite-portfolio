@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import path from "path";
 import contactRoutes from "./routes/contact";
 import { Pool } from "pg";
+import authRoutes from "./routes/auth";
+import adminRoutes from "./routes/admin";
 
 dotenv.config();
 
@@ -31,6 +33,8 @@ app.use(cors());
 
 // API Routes
 app.use("/api/contact", contactRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Serve static files from the React app build directory in production
 if (process.env.NODE_ENV === "production") {
