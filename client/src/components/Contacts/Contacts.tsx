@@ -14,7 +14,7 @@ interface Contact {
 const Contacts: React.FC = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
-  //   const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     // fetch contacts from the API
@@ -38,6 +38,24 @@ const Contacts: React.FC = () => {
     };
     fetchContacts();
   }, []);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString();
+  };
+
+  const getFilteredContacts = () => {
+    if (!searchText) return contacts;
+
+    const searchLower = searchText.toLowerCase();
+    return contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(searchLower) ||
+        contact.email.toLowerCase().includes(searchLower) ||
+        contact.subject.toLowerCase().includes(searchLower) ||
+        contact.message.toLowerCase().includes(searchLower)
+    );
+  };
 
   const columns: ColumnType<Contact>[] = [
     {
@@ -96,7 +114,28 @@ const Contacts: React.FC = () => {
           <Spin size="large" />
         </div>
       ) : (
-        <Table></Table>
+        <Table
+          columns={columns}
+          dataSource={getFilteredContacts()}
+          rowKey="id"
+          scroll={{ x: 1100 }}
+          pagination={{
+            defaultPageSize: 10,
+            showSizeChanger: true,
+            pageSizeOptions: ["10", "20", "50"],
+          }}
+          expandable={{
+            expandedRowRender: (record) => (
+              <div className="p-4 bg-gray-50">
+                <Typography.Title level={5}>Full Message:</Typography.Title>
+                <Typography.Paragraph>{record.message}</Typography.Paragraph>
+                <Typography.Text type="secondary">
+                  Submitted on {formatDate(record.created_at)}
+                </Typography.Text>
+              </div>
+            ),
+          }}
+        ></Table>
       )}
     </div>
   );
