@@ -1,9 +1,11 @@
-import React from "react";
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import AboutPage from "./pages/About";
-import ContactPage from "./pages/Contact";
-import ProjectPage from "./pages/Projects";
-import ResumePage from "./pages/Resume";
+
+const AboutPage = lazy(() => import("./pages/About"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const ProjectPage = lazy(() => import("./pages/Projects"));
+const ResumePage = lazy(() => import("./pages/Resume"));
+const ContactList = lazy(() => import("./pages/ContactList"));
 
 const AppRoutes = () => {
   return (
@@ -13,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/projects" element={<ProjectPage />} />
       <Route path="/resume" element={<ResumePage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/contact-list" element={<ContactList />} />
     </Routes>
   );
 };
