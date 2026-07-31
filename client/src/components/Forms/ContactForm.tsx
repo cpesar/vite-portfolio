@@ -32,7 +32,7 @@ const ContactForm = () => {
         form.resetFields(); // Clear form after successful submission
       } else {
         message.error(
-          "Error submitting form: " + (data.message || "Unknown error")
+          "Error submitting form: " + (data.message || "Unknown error"),
         );
         console.error("Error submitting form:", data);
       }
@@ -132,7 +132,7 @@ const ContactForm = () => {
             <Input.TextArea style={{ height: 140 }} />
           </Form.Item>
 
-          <Form.Item label={null}>
+          <Form.Item label={null} className="flex justify-center">
             <SubmitButton form={form}>Submit</SubmitButton>
           </Form.Item>
         </Form>

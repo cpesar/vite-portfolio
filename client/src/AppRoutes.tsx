@@ -5,8 +5,8 @@ const AboutPage = lazy(() => import("./pages/About"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 const ProjectPage = lazy(() => import("./pages/Projects"));
 const ResumePage = lazy(() => import("./pages/Resume"));
-const ContactList = lazy(() => import("./pages/ContactList"));
-const AdminLogin = lazy(() => import("./components/AdminLogin/AdminLogin"));
+// const ContactList = lazy(() => import("./pages/ContactList"));
+// const AdminLogin = lazy(() => import("./components/AdminLogin/AdminLogin"));
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -30,12 +30,12 @@ const AppRoutes = () => {
       <Route path="/resume" element={<ResumePage />} />
       <Route path="/contact" element={<ContactPage />} />
 
-      <Route path="/admin/login" element={<AdminLogin />} />
+      {/* <Route path="/admin/login" element={<AdminLogin />} /> */}
 
-      <Route
+      {/* <Route
         path="/contact-list"
         element={<ProtectedRoute element={<ContactList />} />}
-      />
+      /> */}
     </Routes>
   );
 };

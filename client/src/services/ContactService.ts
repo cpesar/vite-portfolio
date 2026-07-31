@@ -66,7 +66,6 @@ export const submitContactForm = async (formData: {
     return await response.json();
   } catch (error: unknown) {
     const apiError = error as ApiError;
-
     message.error(apiError.message || "Failed to submit form");
     throw error;
   }

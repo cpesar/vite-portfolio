@@ -75,11 +75,11 @@ const HeaderDrawer: React.FC = () => {
               Contact
             </LinkStyle>
           </div>
-          <div>
+          {/* <div>
             <LinkStyle to="/contact-list" onClick={handleLinkClick}>
               Contact List
             </LinkStyle>
-          </div>
+          </div> */}
         </div>
       </Drawer>
     </>

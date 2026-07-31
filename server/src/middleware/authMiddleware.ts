@@ -13,12 +13,13 @@ export const adminAuth = (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   // get the token from the header
   const token = req.header("x-auth-token");
 
   if (!token) {
-    return res.status(401).json({ message: "No token, authorization denied" });
+    res.status(401).json({ message: "No token, authorization denied" });
+    return;
   }
 
   try {
@@ -27,9 +28,10 @@ export const adminAuth = (
     const decoded: any = jwt.verify(token, secret);
 
     if (!decoded.isAdmin) {
-      return res
+      res
         .status(401)
         .json({ message: "Access denied. Admin privledges required" });
+      return;
     }
     // add user from payload to request
     req.user = decoded;

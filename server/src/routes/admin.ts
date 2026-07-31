@@ -5,6 +5,6 @@ import { adminAuth } from "../middleware/authMiddleware";
 const router = express.Router();
 
 // protected admin routes
-router.get("/contacts", getAllContacts);
+router.get("/contacts", adminAuth, getAllContacts);
 
 export default router;

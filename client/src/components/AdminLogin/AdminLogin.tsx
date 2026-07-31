@@ -61,7 +61,15 @@ const AdminLogin: React.FC = () => {
             <Input placeholder="password" size="large" />
           </Form.Item>
           <Form.Item>
-            <Button>Login</Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full"
+              size="large"
+              //   loading={loading}
+            >
+              Login
+            </Button>
           </Form.Item>
         </Form>
       </Card>
