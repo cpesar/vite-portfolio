@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 const AboutPage = () => {
   return (
-    <div className="font-original-surfer text-2xl mt-30 ml-30 mr-30">
+    <div className="font-original-surfer text-lg sm:text-xl md:text-2xl mt-10 sm:mt-16 md:mt-30 mx-4 sm:mx-10 md:mx-20 lg:mx-30 leading-relaxed">
       {" "}
       <Name>Chris</Name> grew up in Maryland and has called Utah home for the
       last decade. Those who have worked with Chris know him as a detail

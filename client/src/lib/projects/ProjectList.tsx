@@ -38,6 +38,21 @@ const ProjectList = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -60,6 +75,7 @@ const ProjectList = () => {
                 actions={[
                   project.site && (
                     <a
+                      key="site"
                       href={project.site}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -68,6 +84,7 @@ const ProjectList = () => {
                     </a>
                   ),
                   <a
+                    key="repo"
                     href={project.repo}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -99,6 +116,10 @@ const CarouselContainer = styled.div`
   margin: 0 auto;
   padding: 20px 40px;
   position: relative;
+
+  @media (max-width: 640px) {
+    padding: 12px 16px;
+  }
 `;
 
 const StyledCarousel = styled(Carousel)`
@@ -164,6 +185,12 @@ const StyledCarousel = styled(Carousel)`
   & .slick-next {
     right: -40px;
   }
+
+  @media (max-width: 640px) {
+    & .slick-dots {
+      bottom: -24px;
+    }
+  }
 `;
 
 const NavButton = styled.button`
@@ -189,6 +216,10 @@ const NavButton = styled.button`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const PrevButton = styled(NavButton)`
@@ -203,7 +234,10 @@ const SlideContainer = styled.div`
   padding: 40px 10px;
   height: 100%;
   display: flex;
-  //   background: transparent;
+
+  @media (max-width: 640px) {
+    padding: 20px 4px;
+  }
 `;
 
 const ProjectCard = styled(Card)`
@@ -214,13 +248,15 @@ const ProjectCard = styled(Card)`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  //   background: transparent;
 `;
 
 const ImageContainer = styled.div`
   height: 350px;
   overflow: hidden;
+
+  @media (max-width: 640px) {
+    height: 200px;
+  }
 `;
 
 const ProjectImage = styled.img`

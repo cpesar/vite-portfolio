@@ -20,9 +20,9 @@ export default function MainLayout({
           style={{
             background: `linear-gradient(to bottom, #0a9396 0%, #94d2bd 85%)`,
           }}
-          className="flex-1 flex flex-col"
+          className="flex-1 flex flex-col min-h-0"
         >
-          <main className="flex-1 flex items-stretch">
+          <main className="flex-1 flex items-stretch overflow-y-auto min-h-0">
             {isHomePage ? <Home /> : children}
           </main>
         </div>
